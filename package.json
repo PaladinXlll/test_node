@@ -1,0 +1,20 @@
+{
+  "name": "test_node",
+  "version": "1.0.0",
+  "description": "test educational node project",
+  "homepage": "https://github.com/PaladinXlll/test_node#readme",
+  "bugs": {
+    "url": "https://github.com/PaladinXlll/test_node/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaladinXlll/test_node.git"
+  },
+  "license": "ISC",
+  "author": "Paladin",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
