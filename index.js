@@ -1,30 +1,22 @@
-const http = require('http')
-const fs = require('fs')
+const express = require('express')
 
+const app = express() // что-то вроде самого приложения
 
-// createServer в параметрах принимает callback-функцию (которая выполнится после создания сервака)
-// req = request; res = responce
-let server = http.createServer((req, res) => {
-    // res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'})
-    // res.end('Hello from fucking node JS!')
-
-    if (req.url == '/') {
-        const stream = fs.createReadStream('./templates/index.html')
-        stream.pipe(res) // этот метод отправляет инфу на сервер, в то время как createread считывает инфу частями
-    } else if (req.url == '/about') {
-        fs.createReadStream('./templates/about.html').pipe(res)
-    } else {
-        fs.createReadStream('./templates/error.html').pipe(res)
-    }
-
-    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-    // res.end('Hello from fucking <b>node JS</b>!')
-    
+app.get('/', (req, res) => {
+    res.send('This is home page')
 })
 
-const PORT = 3000
-const HOST = 'localhost'
+app.get('/about', (req, res) => {
+    res.send('This is page about us')
+})
 
-server.listen(PORT, HOST, () => {
-    console.log(`Server is running: http://${HOST}:${PORT}`)
+// Через двоеточик указываются динамические значения
+app.get('/user/:username/:id', (req, res) => {
+    res.send(`User ID: ${req.params.id}. Username: ${req.params.username}`)
+})
+
+PORT = 3000
+
+app.listen(PORT, () => {
+    console.log(`Server is running...\nhttp://localhost:${PORT}`)
 })
