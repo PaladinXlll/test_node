@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeJS Serv</title>
+    <style>
+        body {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>USER PAGE</h1><br>
+    <!-- Если добавляем '=' в ебанутую конструкцию, то это сразу выведется на экран -->
+    <h2>This is <%= username %>'s page..</h2> 
+    <h3><% if(username.toLowerCase() == 'paladon') { %>
+     <ul>
+        <% hobbies.forEach((el) => { %>
+            <li><%= el %></li>
+        <% }) %>
+     </ul>   
+    <% } %></h3>
+    <p>Lorem sapiente quae dolores. Omnis laboriosam nemo cumque quae.</p>
+    Перейти на <a href="/">главную страницу</a>
+</body>
+</html>
