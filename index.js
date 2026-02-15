@@ -3,6 +3,7 @@ const express = require('express')
 const app = express() // что-то вроде самого приложения
 
 app.set('view engine', 'ejs') // тут можно пихнуть другой шаблонизатор 
+app.use(express.static('public')) // установка промежуточного ПО
 
 app.get('/', (req, res) => {
     // res.send('This is home page')
@@ -16,7 +17,7 @@ app.get('/about', (req, res) => {
 })
 
 // Через двоеточик указываются динамические значения
-app.get('/user/:username/:id', (req, res) => {
+app.get('/users/:username/:id', (req, res) => {
     // res.send(`User ID: ${req.params.id}. Username: ${req.params.username}`)
     let data = {
         username: req.params.username,

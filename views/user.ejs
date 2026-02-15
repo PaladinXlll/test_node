@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NodeJS Serv</title>
-    <style>
-        body {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
+    <%- include('blocks/header') -%>
+
     <h1>USER PAGE</h1><br>
     <!-- Если добавляем '=' в ебанутую конструкцию, то это сразу выведется на экран -->
     <h2>This is <%= username %>'s page..</h2> 
