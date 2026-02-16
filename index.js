@@ -4,6 +4,7 @@ const app = express() // что-то вроде самого приложени�
 
 app.set('view engine', 'ejs') // тут можно пихнуть другой шаблонизатор 
 app.use(express.static('public')) // установка промежуточного ПО
+app.use(express.urlencoded({ extended: false })) // штука, нужна чтобы парсер (модуль) корректно данные с форм парсил
 
 app.get('/', (req, res) => {
     // res.send('This is home page')
@@ -14,6 +15,15 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     // res.send('This is page about us')
     res.render('about')
+})
+
+app.post('/check-user', (req, res) => {
+    let username = req.body.username // req.body -> тело запроса
+    if (username == "") {
+        return res.redirect('/')
+    } else {
+        return res.redirect(`/users/${username}/1`)
+    }
 })
 
 // Через двоеточик указываются динамические значения

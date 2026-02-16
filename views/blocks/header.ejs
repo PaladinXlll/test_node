@@ -5,8 +5,9 @@
         <a href="/about">About</a>
         <a href="/users/paladon/777">User Paladon</a>
     </div>
-    <form>
-        <input type="text" placeholder="Поиск по странице..."/>
+    <form method="POST" action="/check-user">
+        <input type="text" name="username" placeholder="Имя пользователя"/>
         <button type="submit">Поиск</button>
+        <!-- тип submit переадресует юзера (по ссылке в action), страница перезагрузится -->
     </form>
 </header>
