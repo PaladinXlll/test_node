@@ -1,0 +1,50 @@
+networks:
+  test-network:
+    name: test-network
+
+services:
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    networks:
+      - test-network
+  backend:
+    container_name: backend
+    build: ./backend
+    env_file:
+      - .env
+    networks:
+      - test-network
+    depends_on:
+      - mysql
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 8088:80
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - test-network
+    depends_on:
+      - backend
+  mysql:
+    container_name: mysql
+    image: mysql:9.6
+    env_file:
+      - .env
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      - test-network
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin
+    env_file:
+      - .env
+    ports:
+      - 1500:80
+    depends_on:
+      - mysql
+    networks:
+      - test-network
